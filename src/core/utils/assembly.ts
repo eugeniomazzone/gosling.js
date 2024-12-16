@@ -6,7 +6,8 @@ import {
     CHROM_SIZE_HG19,
     CHROM_SIZE_HG38,
     CHROM_SIZE_MM10,
-    CHROM_SIZE_MM9
+    CHROM_SIZE_MM9,
+    CHROM_SIZE_CF3
 } from './chrom-size';
 
 export interface ChromSize {
@@ -138,6 +139,12 @@ const CRHOM_SIZES: { [assembly: string]: ChromSize } = Object.freeze({
         total: getChromTotalSize(CHROM_SIZE_MM9),
         path: basePath('mm9')
     },
+    canfam3: {
+        size: CHROM_SIZE_CF3,
+        interval: getChromInterval(CHROM_SIZE_CF3),
+        total: getChromTotalSize(CHROM_SIZE_CF3),
+        path: basePath('canfam3')
+    },
     // `unknown` assembly contains only one chromosome with max length
     unknown: {
         size: { chr: Number.MAX_VALUE },
@@ -153,7 +160,7 @@ const CRHOM_SIZES: { [assembly: string]: ChromSize } = Object.freeze({
 export function getAutoCompleteObject(assembly: Assembly = 'hg38') {
     const base = {
         autocompleteServer: 'https://server.gosling-lang.org/api/v1',
-        chromInfoServer: 'https://server.gosling-lang.org/api/v1',
+        chromInfoServer:    'https://server.gosling-lang.org/api/v1',
         chromInfoId: assembly
     };
     switch (assembly) {

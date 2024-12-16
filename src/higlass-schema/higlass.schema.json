@@ -5,6 +5,10 @@
     "Assembly": {
       "anyOf": [
         {
+          "const": "canFam3",
+          "type": "string"
+        },
+        {
           "const": "hg38",
           "type": "string"
         },
